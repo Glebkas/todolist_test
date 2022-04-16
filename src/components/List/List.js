@@ -18,6 +18,10 @@ export const List = () => {
     );
   };
 
+  const deleteItem = (id) => {
+    setTodo(todo.filter((item) => item.id !== id));
+  };
+
   return (
     <ul>
       {todo.map((item) => (
