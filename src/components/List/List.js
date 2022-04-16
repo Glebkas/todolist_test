@@ -3,7 +3,7 @@ import { ListItem } from "../ListItem/ListItem";
 import { useContext } from "react";
 import { toDoContext } from "../../contexts/todo-context";
 
-export const List = () => {
+export const List = ({ toggleEditTaskPopup }) => {
   const { todo, setTodo } = useContext(toDoContext);
   const toggleCheck = (id) => {
     setTodo(
@@ -31,6 +31,7 @@ export const List = () => {
           label={item.label}
           checked={item.checked}
           onDelete={() => deleteItem(item.id)}
+          onEdit={() => toggleEditTaskPopup(item.label)}
         />
       ))}
     </ul>
