@@ -1,0 +1,32 @@
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 300px;
+  width: 100%;
+  margin: auto;
+  padding: 5px;
+}
+
+.list-item__container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 5px;
+  transition: 0.7s;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.list-item__container:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: 0.8s;
+}
+
+.list-item__label {
+  margin: 0 0 0 10px;
+}
+
+.list-item__label_cheked {
+  text-decoration: line-through;
+  margin: 0 0 0 10px;
+}
