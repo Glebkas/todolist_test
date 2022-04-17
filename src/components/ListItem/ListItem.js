@@ -1,6 +1,13 @@
 import "./ListItem.css";
 
-export const ListItem = ({ label, id, checked, onClick, onDelete, onEdit }) => {
+export const ListItem = ({
+  label,
+  id,
+  checked,
+  onClick,
+  onDelete,
+  handleTaskEdit
+}) => {
   return (
     <li className="list-item">
       <div onClick={onClick} className="list-item__container">
@@ -14,7 +21,7 @@ export const ListItem = ({ label, id, checked, onClick, onDelete, onEdit }) => {
           {label}
         </p>
       </div>
-      <button onClick={onEdit}>Edit</button>
+      <button onClick={handleTaskEdit}>Edit</button>
       <button onClick={onDelete} className="list-item__button">
         X
       </button>

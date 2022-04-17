@@ -3,8 +3,9 @@ import { ListItem } from "../ListItem/ListItem";
 import { useContext } from "react";
 import { toDoContext } from "../../contexts/todo-context";
 
-export const List = ({ toggleEditTaskPopup }) => {
+export const List = ({ handleTaskEdit }) => {
   const { todo, setTodo } = useContext(toDoContext);
+
   const toggleCheck = (id) => {
     setTodo(
       todo.map((item) => {
@@ -31,7 +32,7 @@ export const List = ({ toggleEditTaskPopup }) => {
           label={item.label}
           checked={item.checked}
           onDelete={() => deleteItem(item.id)}
-          onEdit={() => toggleEditTaskPopup(item.label)}
+          handleTaskEdit={() => handleTaskEdit(item)}
         />
       ))}
     </ul>

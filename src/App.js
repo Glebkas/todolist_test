@@ -11,6 +11,7 @@ export default function App() {
   const [todo, setTodo] = useState(todosTemplate);
   const [openAddTaskPopup, setOpenAddTaskPopup] = useState(false);
   const [openEditTaskPopup, setOpenEditTaskPopup] = useState(false);
+  const [item, setItem] = useState({});
 
   const toggleAddTaskPopup = () => {
     !openAddTaskPopup ? setOpenAddTaskPopup(true) : setOpenAddTaskPopup(false);
@@ -22,18 +23,23 @@ export default function App() {
       : setOpenEditTaskPopup(false);
   };
 
+  function handleTaskEdit(item) {
+    setItem(item);
+    toggleEditTaskPopup();
+  }
+
   return (
     <toDoContext.Provider value={{ todo, setTodo }}>
       <div className="App">
-        {openAddTaskPopup ? (
+        {openAddTaskPopup || openEditTaskPopup ? (
           ""
         ) : (
           <div>
             <h1 className="main-title">My to do list</h1>
-            {todo.length === 0 ? <p>Looks like youre free today</p> : ""}
-            <button onClick={toggleAddTaskPopup}>Add Task</button>
 
-            <List toggleEditTaskPopup={toggleEditTaskPopup} />
+            <button onClick={toggleAddTaskPopup}>Add Task</button>
+            {todo.length === 0 ? <p>Looks like youre free today</p> : ""}
+            <List handleTaskEdit={handleTaskEdit} />
           </div>
         )}
         {openAddTaskPopup && (
@@ -43,7 +49,10 @@ export default function App() {
         )}
         {openEditTaskPopup && (
           <Popup togglePopup={toggleEditTaskPopup}>
-            <EditTaskForm></EditTaskForm>
+            <EditTaskForm
+              item={item}
+              toggleEditTaskPopup={toggleEditTaskPopup}
+            ></EditTaskForm>
           </Popup>
         )}
       </div>
