@@ -2,7 +2,6 @@ import "./ListItem.css";
 
 export const ListItem = ({
   label,
-  id,
   checked,
   onClick,
   onDelete,

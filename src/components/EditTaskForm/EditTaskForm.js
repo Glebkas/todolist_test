@@ -48,7 +48,7 @@ export const EditTaskForm = ({ item, toggleEditTaskPopup }) => {
         onClick={() => handleEditTask(item.id, task)}
         className="form__button"
       >
-        Edit task
+        Save
       </button>
     </div>
   );

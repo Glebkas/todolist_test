@@ -6,6 +6,7 @@ import { List } from "./components/List/List";
 import { Popup } from "./components/Popup/Popup";
 import { AddTaskForm } from "./components/AddTaskForm/AddTaskForm";
 import { EditTaskForm } from "./components/EditTaskForm/EditTaskForm";
+import { Counter } from "./components/Counter/Counter";
 
 export default function App() {
   const [todo, setTodo] = useState(todosTemplate);
@@ -38,8 +39,14 @@ export default function App() {
             <h1 className="main-title">My to do list</h1>
 
             <button onClick={toggleAddTaskPopup}>Add Task</button>
-            {todo.length === 0 ? <p>Looks like youre free today</p> : ""}
-            <List handleTaskEdit={handleTaskEdit} />
+            {todo.length !== 0 ? (
+              <>
+                <List handleTaskEdit={handleTaskEdit} />
+                <Counter />
+              </>
+            ) : (
+              <p>Looks like youre free today</p>
+            )}
           </div>
         )}
         {openAddTaskPopup && (
